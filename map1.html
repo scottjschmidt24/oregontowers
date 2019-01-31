@@ -37,7 +37,7 @@
     });
     // Add the cellTowers to the map.
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
-    
+
 
 
     // 4. build up a set of colors from colorbrewer's dark2 category
@@ -62,9 +62,22 @@ function (feature, latlng) {
     return L.marker(latlng, {icon: L.divIcon({className: 'fa fa-signal marker-color-' + (id + 1).toString() })});
 }
 
+pointToLayer: function (feature, latlng) {
+    var id = 0;
+    if (feature.properties.company == "New Cingular") { id = 0; }
+    else if (feature.properties.company == "Cellco")  { id = 1; }
+    else if (feature.properties.company == "RCC Minnesota")  { id = 2; }
+    else if (feature.properties.company == "Verizon")  { id = 3; }
+    else if (feature.properties.company == "US Cellular")  { id = 4; }
+    else if (feature.properties.company == "Hood River Cellular")  { id = 5; }
+    else if (feature.properties.company == "Medford Cellular")  { id = 6; }
+    else if (feature.properties.company == "Oregon RSA")  { id = 7; }
+    else { id = 8;} // "Salem Cellular"
+    return L.marker(latlng, {icon: L.divIcon({className: 'fa fa-signal marker-color-' + (id + 1).toString() })});
+    }
 
-
-
+    // create the county layer
+    L.geoJson.ajax("assets/counties.geojson").addTo(mymap);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 </body>
