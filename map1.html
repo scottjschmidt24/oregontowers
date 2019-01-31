@@ -59,13 +59,7 @@ function (feature, latlng) {
 
 
 
-    // assign a function to the onEachFeature parameter of the cellTowers object.
-// Then each (point) feature will bind a popup window.
-// The content of the popup window is the value of `feature.properties.company`
-onEachFeature: function (feature, layer) {
-    layer.bindPopup(feature.properties.company);
-},
-    cellTowers.addTo(mymap);
+
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 </body>
